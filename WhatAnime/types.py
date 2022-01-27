@@ -1,5 +1,5 @@
 from lib2to3.pgen2.token import OP
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 
 class WhatAnimeType:
@@ -15,7 +15,7 @@ class User(WhatAnimeType):
     """
     This object represents a User
     
-    Params:
+    Args:
         id (:obj:`str`): User ID 
         priority (:obj:`int`): With limited processing power available, the server has priority queue to handle requests 
         concurrency (:obj:`int`): The number of simultaneous (parallel) requests you can make to the API server
@@ -69,9 +69,10 @@ class Result(WhatAnimeType):
     """
     This object represents a Result for :class:`WhatAnime.types.WAResponse`
 
-    Params:
-        anilist (:onj:`int` | :class:`WhatAnime.types.Anilist`): The matching anilist ID or Anilist Info, which contains information about
+    Args:
+        anilist (:obj:`int` | :class:`WhatAnime.types.Anilist`): The matching anilist ID or Anilist Info, which contains information about
             id, idMal, title, synonyms and isAdult
+            
         filename (:obj:`str`): The filename of file where the match is found
         episode (:obj:`Any`): The extracted episode number from filename.
         from_time (:obj:`int`): Starting time of the matching scene (seconds)
@@ -80,7 +81,7 @@ class Result(WhatAnimeType):
         video (:obj:`str`): URL to the preview video of the matching scene
         image (:obj:`str`): URL to the preview image of the matching scene
     """
-    anilist: int | Anilist
+    anilist: Union[int,Anilist]
     filename: str
     episode: Any
     from_time: int
@@ -91,7 +92,7 @@ class Result(WhatAnimeType):
 
     def __init__(
         self, 
-        anilist: int | Anilist, 
+        anilist: Union[int, Anilist], 
         filename: str,
         episode: Any,
         from_time: int,
@@ -115,7 +116,7 @@ class WAResponse(WhatAnimeType):
     """
     This object represents Response from API.
 
-    Params:
+    Args:
         frameCount (:obj:`int`); Total number of frames searched.
         error (:obj:`str`): Error Message
         result (:obj:`list`): List of :class:`WhatAnime.types.Result` Object, which containes all the information about the search request.

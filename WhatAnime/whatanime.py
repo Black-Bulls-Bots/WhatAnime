@@ -3,7 +3,7 @@ Client class for the wrapper
 author: Joker Hacker
 """
 from json import JSONDecodeError
-from typing import IO, Any, Dict, Tuple, Optional
+from typing import IO, Any, Dict, Tuple, Optional, Union
 import requests
 from requests import Response
 from .exception import APIError, ImageSizeTooLargeError, InvalidToken, QuotaExceedError
@@ -38,7 +38,7 @@ class Client:
 
         self.session = requests.Session()
 
-    def _make_request(self, path: str, method: str = "get", **kwargs: Dict[Any, Any]) -> Tuple[Dict | str, Response]:
+    def _make_request(self, path: str, method: str = "get", **kwargs: Dict[Any, Any]) -> Tuple[Union[Dict, str], Response]:
         req = self.session.request(method, f'{self._host}/{path}', **kwargs)
 
         if req.status_code in [200, 201]:
