@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as file:
 
 setup(
     name="python-whatanime",
-    version="0.1.1",
+    version="0.1.2",
     author="Joker Hacker",
     author_email="jokerhacker.6521@protonmail.com",
     packages=["WhatAnime"],
@@ -20,5 +20,5 @@ setup(
     install_requires=[
         "requests"
     ],
-    python_requires = ">=3.9"
+    python_requires = ">=3.8"
 )

@@ -119,13 +119,13 @@ class WAResponse(WhatAnimeType):
     Args:
         frameCount (:obj:`int`); Total number of frames searched.
         error (:obj:`str`): Error Message
-        result (:obj:`list`): List of :class:`WhatAnime.types.Result` Object, which containes all the information about the search request.
+        result (:obj:`List`): List of :class:`WhatAnime.types.Result` Object, which containes all the information about the search request.
     """
     frameCount: int
     error: Optional[str]
-    result: list[Result]
+    result: List[Result]
 
-    def __init__(self, frameCount: int, error: Optional[str], result: list[Result], **kwargs):
+    def __init__(self, frameCount: int, error: Optional[str], result: List[Result], **kwargs):
         self.frameCount = frameCount
         self.error = error
         self.result = result
